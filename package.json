@@ -1,0 +1,22 @@
+{
+  "name": "js-test-engineer-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielSzabo1/js-test-engineer-exercise.git"
+  },
+  "author": "Daniel Szabo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielSzabo1/js-test-engineer-exercise/issues"
+  },
+  "homepage": "https://github.com/DanielSzabo1/js-test-engineer-exercise#readme",
+  "dependencies": {
+    "cypress": "^10.3.0"
+  }
+}
