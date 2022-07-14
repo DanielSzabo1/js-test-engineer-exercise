@@ -10,7 +10,7 @@ describe('Creating an account - password and email address requirements', () => 
     registrationPage.acceptCookies()
   })
 
-  it.skip('Should reject to continue with a password less than 8 characters', () => {
+  it('Should reject to continue with a password less than 8 characters', () => {
     const userEmail = randomEmail()
     const userPassword = passwordGenerator.generate({length: 7, numbers: true}) 
 
@@ -28,12 +28,20 @@ describe('Creating an account - password and email address requirements', () => 
     registrationPage.validatePasswordRequirement('caseSensitivity', false)
   })
 
-  it.skip('Should reject to continue with a password without lowercase letter', () => {
+  it('Should reject to continue with a password without lowercase letter', () => {
+    const userEmail = randomEmail.generateEmail()
+    const userPassword = passwordGenerator.generate({numbers: true, strict: true}).toUpperCase()
+
+    registrationPage.fillOutFormThenContinue(userEmail, userPassword)
+
+    registrationPage.validatePasswordRequirement('caseSensitivity', false)
   })
 
-  it.skip('Should reject to continue with a password without number', () => {
+  it('Should reject to continue with a password without number', () => {
+
   })
 
-  it.skip('Should reject to continue with an email including not allowed characters', () => {
+  it('Should reject to continue with an email including not allowed characters', () => {
+
   })
 })
