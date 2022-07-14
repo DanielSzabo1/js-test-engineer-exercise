@@ -8,6 +8,7 @@ class RegistrationPage {
   createAnAccount = {
   emailAddressField: '#email',
   passwordField: '#password',
+  emailFeedback: '#email-feedback',
   showPasswordToggle: '[data-testid="password-toggle]',
   continueButton: '[data-testid="account-form-submit"]'
   }
@@ -54,6 +55,10 @@ class RegistrationPage {
     const indexOfReq = requirements.indexOf(nameOfRequirement)
 
     cy.get(this.passwordRequirements(indexOfReq)).invoke('attr', 'data-valid').should('eq', reqIsValid.toString())
+  }
+
+  validateEmailAddress() {
+    cy.get(this.createAnAccount.emailFeedback).should('be.visible').should('have.text', 'Enter an email address in the correct format, like name@example.com')
   }
 }
 
