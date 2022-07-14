@@ -14,7 +14,7 @@ class RegistrationPage {
 
   yourDetails = {
     firstNameField: '#firstName', 
-    lastNameField: '#lastName',
+    lastNameField: '#lastName', 
     securityDetails: {
       dateOfBirth: '24/10/1995',
       MothersMaidenName: 'Susan'
@@ -24,11 +24,11 @@ class RegistrationPage {
 
   acceptCookies() {
     cy.frameLoaded('.truste_popframe')
-    cy.iframe().find(this.cookiePolicyPopUp.acceptCookie).click() 
+    cy.iframe().find(this.cookiePolicyPopUp.acceptCookie).should('be.visible').click() 
   }
 
   passwordRequirements(indexOfReq) {
-    return `#password-requirements ul li:nth-child(${indexOfReq})`
+    return `[data-testid="password-requirements"] ul li:nth-child(${indexOfReq+1})`
   }
 
   fillEmail(userEmail) {
@@ -41,6 +41,19 @@ class RegistrationPage {
 
   clickContinue() {
     cy.get(this.createAnAccount.continueButton).click()
+  }
+
+  fillOutFormThenContinue(email, password) {
+    this.fillEmail(email)
+    this.fillPassword(password)
+    this.clickContinue()
+  }
+
+  validatePasswordRequirement(nameOfRequirement, reqIsValid) {
+    const requirements = ['characterNumber', 'caseSensitivity', 'includesNumber']
+    const indexOfReq = requirements.indexOf(nameOfRequirement)
+
+    cy.get(this.passwordRequirements(indexOfReq)).invoke('attr', 'data-valid').should('eq', reqIsValid.toString())
   }
 }
 
