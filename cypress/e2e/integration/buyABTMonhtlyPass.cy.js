@@ -47,6 +47,14 @@ describe('Creating an account - password and email address requirements', () => 
   })
 
   it('Should reject to continue with an email including not allowed characters', () => {
+    const userEmail = randomEmail.generateEmail() + 'á'
+    const userPassword = passwordGenerator.generate({numbers: true, strict: true})
+
+    registrationPage.fillOutFormThenContinue(userEmail, userPassword)
+
+    registrationPage.validateEmailAddress()
+
+
 
   })
 })
