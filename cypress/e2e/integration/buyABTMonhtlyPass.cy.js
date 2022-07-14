@@ -11,7 +11,7 @@ describe('Creating an account - password and email address requirements', () => 
   })
 
   it('Should reject to continue with a password less than 8 characters', () => {
-    const userEmail = randomEmail()
+    const userEmail = randomEmail().replaceAll('"','')
     const userPassword = passwordGenerator.generate({length: 7, numbers: true}) 
 
     registrationPage.fillOutFormThenContinue(userEmail, userPassword)
@@ -20,7 +20,7 @@ describe('Creating an account - password and email address requirements', () => 
   })
 
   it('Should reject to continue with a password without uppercase letter', () => {
-    const userEmail = randomEmail.generateEmail()
+    const userEmail = randomEmail.generateEmail().replaceAll('"','')
     const userPassword = passwordGenerator.generate({numbers: true, strict: true}).toLowerCase()
 
     registrationPage.fillOutFormThenContinue(userEmail, userPassword)
@@ -29,7 +29,7 @@ describe('Creating an account - password and email address requirements', () => 
   })
 
   it('Should reject to continue with a password without lowercase letter', () => {
-    const userEmail = randomEmail.generateEmail()
+    const userEmail = randomEmail.generateEmail().replaceAll('"','')
     const userPassword = passwordGenerator.generate({numbers: true, strict: true}).toUpperCase()
 
     registrationPage.fillOutFormThenContinue(userEmail, userPassword)
@@ -38,7 +38,12 @@ describe('Creating an account - password and email address requirements', () => 
   })
 
   it('Should reject to continue with a password without number', () => {
+    const userEmail = randomEmail.generateEmail().replaceAll('"','')
+    const userPassword = passwordGenerator.generate({strict: true})
 
+    registrationPage.fillOutFormThenContinue(userEmail, userPassword)
+
+    registrationPage.validatePasswordRequirement('includesNumber', false)
   })
 
   it('Should reject to continue with an email including not allowed characters', () => {
