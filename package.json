@@ -19,7 +19,9 @@
   "dependencies": {
     "cypress": "^10.3.0",
     "cypress-iframe": "^1.0.1",
+    "date-and-time": "^2.4.0",
     "email-generator": "^1.0.1",
-    "generate-password": "^1.7.0"
+    "generate-password": "^1.7.0",
+    "random-fullName": "^1.0.0"
   }
 }
