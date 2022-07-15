@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DanielSzabo1/js-test-engineer-exercise#readme",
   "dependencies": {
+    "cookie": "^0.5.0",
     "cypress": "^10.3.0",
     "cypress-iframe": "^1.0.1",
     "date-and-time": "^2.4.0",

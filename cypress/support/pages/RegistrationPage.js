@@ -1,5 +1,7 @@
-require('cypress-iframe');
+import { cookiesToAccept } from '../utils';
 
+require('cypress-iframe');
+const cookie = require('cookie')
 class RegistrationPage {
 
   cookiePolicyPopUp = {
@@ -15,6 +17,16 @@ class RegistrationPage {
 
   waitForHeader(titleOfPage) {
     cy.get('h1').should('be.visible').should('have.text', titleOfPage)
+  }
+
+  setCookies() {
+    const cookies = cookie.parse(cookiesToAccept)
+    
+    for(let cookie in cookies) {
+      cy.setCookie(cookie, cookies[cookie])
+    }
+    
+    cy.reload()
   }
 
   acceptCookies() {
