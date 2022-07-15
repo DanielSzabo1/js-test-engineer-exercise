@@ -8,7 +8,8 @@ describe('Creating an account - password and email address requirements', () => 
 
   beforeEach(() => {
     cy.visit(Cypress.env('createAnAccountUrl'))
-    registrationPage.acceptCookies()
+    registrationPage.setCookies()
+    // registrationPage.acceptCookies()
     registrationPage.waitForHeader('Create an account')
   })
 
@@ -64,7 +65,8 @@ describe('Creating an account - filling out the form then continue', () => {
 
   before(() => {
     cy.visit(Cypress.env('createAnAccountUrl'))
-    registrationPage.acceptCookies()
+    registrationPage.setCookies()
+    // registrationPage.acceptCookies()
   })
 
   it('I should be able to continue after I fill out the form', () => {
